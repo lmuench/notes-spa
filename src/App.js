@@ -36,7 +36,8 @@ const routes = [{
 }];
 
 const defaultRoute = {
-  component: () => <div>Not found!</div>
+  component: Notebooks,
+  effects: [() => console.log('default route')]
 };
 
 const App = () => (
