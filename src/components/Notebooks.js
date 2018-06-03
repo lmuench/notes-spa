@@ -16,7 +16,10 @@ class Notebooks extends Component {
   };
 
   getNotebooks = async () => {
-    const response = await fetch('http://localhost:5000/notebooks');
+    const response = await fetch(
+      'http://localhost:5000/notebooks'
+    );
+    if (response.status !== 200) return [];
     const json = await response.json();
     return json;
   };
@@ -34,7 +37,7 @@ class Notebooks extends Component {
       <tr key={notebook.id}>
         <td>
           <LightLink
-            path={`/notebooks/${notebook.id}`}
+            path={`/notebooks/${notebook.id}/notes`}
             style={{ cursor: 'pointer' }}
           >
             {notebook.title}

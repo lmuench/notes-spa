@@ -13,12 +13,15 @@ class Notebook extends Component {
   }
 
   componentDidMount = async () => {
-    const notebook = await this.getNotebook(this.props.notebook);
+    const notebook = await this.getNotebook();
     this.setState({ notebook: notebook });
   };
 
-  getNotebook = async notebook => {
-    const response = await fetch(`http://localhost:5000/notebooks/${notebook}`);
+  getNotebook = async () => {
+    const response = await fetch(
+      `http://localhost:5000/notebooks/${this.props.notebook}`
+    );
+    if (response.status !== 200) return { title: '' };
     const json = await response.json();
     return json;
   };

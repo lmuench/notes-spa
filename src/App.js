@@ -21,7 +21,11 @@ const routes = [{
 }, {
   path: '/notebooks/:notebook/notes',
   component: Notes,
-  effects: [() => console.log('/notebooks/:notebook/notes')]
+  effects: [() => console.log('/notebooks/:notebook/notes')],
+  propsFromPath: [{
+    prop: 'notebook',
+    segment: ':notebook'
+  }]
 }, {
   path: '/notebooks/:notebook/notes/:note',
   component: Note,
