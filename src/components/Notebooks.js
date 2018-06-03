@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import '../App.css';
+import { LightLink } from 'react-light-router';
 
 class Notebooks extends Component {
   constructor(props) {
@@ -22,14 +23,23 @@ class Notebooks extends Component {
 
   notebookTable = () => (
     <table>
-      <this.notebookTableRows />
+      <tbody>
+        <this.notebookTableRows />
+      </tbody>
     </table>
   );
 
   notebookTableRows = () => (
     this.state.notebooks.map(notebook => (
-      <tr>
-        <td>{notebook.title}</td>
+      <tr key={notebook.id}>
+        <td>
+          <LightLink
+            path={`/notebooks/${notebook.id}`}
+            style={{ cursor: 'pointer' }}
+          >
+            {notebook.title}
+          </LightLink>
+        </td>
       </tr>
     ))
   );

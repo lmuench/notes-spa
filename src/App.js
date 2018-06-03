@@ -8,20 +8,24 @@ import Note from './components/Note';
 
 const routes = [{
   path: '/notebooks',
-  component: Notebooks
+  component: Notebooks,
+  effects: [() => console.log('/notebooks')]
 }, {
   path: '/notebooks/:notebook',
   component: Notebook,
+  effects: [() => console.log('/notebooks/:notebook')],
   propsFromPath: [{
     prop: 'notebook',
     segment: ':notebook'
   }]
 }, {
   path: '/notebooks/:notebook/notes',
-  component: Notes
+  component: Notes,
+  effects: [() => console.log('/notebooks/:notebook/notes')]
 }, {
   path: '/notebooks/:notebook/notes/:note',
   component: Note,
+  effects: [() => console.log('/notebooks/:notebook/notes/:note')],
   propsFromPath: [{
     prop: 'notebook',
     segment: ':notebook'
