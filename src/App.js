@@ -2,18 +2,15 @@ import React, { Component } from 'react';
 import './App.css';
 import { LightLink, LightRouter } from 'react-light-router';
 import Notebooks from './components/Notebooks';
-import Notebook from './components/Notebook';
 import Notes from './components/Notes';
 import Note from './components/Note';
 
 const routes = [{
   path: '/notebooks',
-  component: Notebooks,
-  effects: [() => console.log('/notebooks')]
+  component: Notebooks
 }, {
   path: '/notebooks/:notebook',
-  component: Notebook,
-  effects: [() => console.log('/notebooks/:notebook')],
+  component: Notes,
   propsFromPath: [{
     prop: 'notebook',
     segment: ':notebook'
@@ -21,7 +18,6 @@ const routes = [{
 }, {
   path: '/notebooks/:notebook/notes',
   component: Notes,
-  effects: [() => console.log('/notebooks/:notebook/notes')],
   propsFromPath: [{
     prop: 'notebook',
     segment: ':notebook'
@@ -29,7 +25,6 @@ const routes = [{
 }, {
   path: '/notebooks/:notebook/notes/:note',
   component: Note,
-  effects: [() => console.log('/notebooks/:notebook/notes/:note')],
   propsFromPath: [{
     prop: 'notebook',
     segment: ':notebook'
